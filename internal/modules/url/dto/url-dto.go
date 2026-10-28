@@ -5,5 +5,5 @@ type CreateURLRequest struct {
 }
 
 type DeleteURL struct {
-	Id uint `json:"id" binding:"required" `
+	Id uint `json:"id" binding:"required"`
 }
