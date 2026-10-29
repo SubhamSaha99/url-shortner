@@ -20,18 +20,18 @@ type URLRepository interface {
 }
 
 type URLService struct {
-	repo URLRepository
+	repo    URLRepository
+	charset string
 }
 
-func NewURLService(repo URLRepository) *URLService {
+func NewURLService(repo URLRepository, charset string) *URLService {
 	return &URLService{
-		repo: repo,
+		repo:    repo,
+		charset: charset,
 	}
 }
 
-const charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-func generateShortCode(length int) (string, error) {
+func generateShortCode(length int, charset string) (string, error) {
 	var result strings.Builder
 
 	for range length {
@@ -71,7 +71,7 @@ func (s *URLService) CreateShortURL(
 	}
 
 	for range 5 {
-		code, err := generateShortCode(8)
+		code, err := generateShortCode(8, s.charset)
 		if err != nil {
 			return nil, err
 		}

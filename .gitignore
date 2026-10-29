@@ -20,3 +20,6 @@ go.work.sum
 
 # Env files
 .env
+
+# Db files
+.db
