@@ -23,3 +23,7 @@ go.work.sum
 
 # Db files
 .db
+
+# tmp file
+/tmp
+go
